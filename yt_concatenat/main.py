@@ -1,17 +1,16 @@
 import urllib.request
 import json
+from yt_concatenat.settings import API_KEY
 
-CHANNEL_ID = 'YOUR_API_KEY'
+CHANNEL_ID = 'UCKSVUHI9rbbkXhvAXK-2uxA'
 
 
 def get_all_video_in_channel(CHANNEL_ID):
-    api_key = 'AIzaSyBZMKv_Hyv4ce7-F1zanVX07cn4h4fFvp8'
-
     base_video_url = 'https://www.youtube.com/watch?v='                 # 基底影片連結 (不用修改)
     base_search_url = 'https://www.googleapis.com/youtube/v3/search?'   # API endpoint: 向網站需求資料的連結
 
     # API 拿資料時使用的網址: API endpoint 加上 channel id，表示需要哪個頻道的影片，每個都是字典並透過 & 連接
-    first_url = f'{base_search_url}key={api_key}&channelId={CHANNEL_ID}&part=snippet,id&order=date&maxResults=25'
+    first_url = f'{base_search_url}key={API_KEY}&channelId={CHANNEL_ID}&part=snippet,id&order=date&maxResults=25'
 
     video_links = []
     url = first_url                                                     # 存成 url
@@ -36,6 +35,6 @@ def get_all_video_in_channel(CHANNEL_ID):
     return video_links
 
 
-video_list = get_all_video_in_channel(CHANNEL_ID)
-print(video_list)                                                       # 頻道內的所有影片連結，以 list 裝起來。
-print(len(video_list))                                                  # 查看頻道內有幾個影片連結。
+# video_list = get_all_video_in_channel(CHANNEL_ID)
+# print(video_list)                                                       # 頻道內的所有影片連結，以 list 裝起來。
+# print(len(video_list))                                                  # 查看頻道內有幾個影片連結。
