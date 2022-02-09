@@ -2,12 +2,11 @@ import urllib.request
 import json
 
 from yt_concatenate.settings import API_KEY
-from yt_concatenate.steps.step import Step
-from yt_concatenate.steps.step import StepException
+from yt_concatenate.pipeline.steps.step import Step
 
 
 class GetVideoList(Step):
-    def process(self, inputs):                                              # inputs 是「字典」格式，目的是避免父類別 step.py 的參數過度延長。
+    def process(self, inputs, data):                                              # inputs 是「字典」格式，目的是避免父類別 step.py 的參數過度延長。
         channel_id = inputs['CHANNEL_ID']
 
         base_video_url = 'https://www.youtube.com/watch?v='                 # 基底影片連結 (不用修改)
@@ -37,10 +36,9 @@ class GetVideoList(Step):
             except KeyError:
                 break
 
-        print(len(video_links))  # 確定影片數量
+        print(len(video_links))                                             # 查看頻道內有幾個影片連結。
+        print(video_links)                                                  # 頻道內的所有影片連結，以 list 裝起來。
         return video_links
 
 
 # video_list = get_all_video_in_channel(CHANNEL_ID)
-# print(video_list)                                                       # 頻道內的所有影片連結，以 list 裝起來。
-# print(len(video_list))                                                  # 查看頻道內有幾個影片連結。
