@@ -1,20 +1,10 @@
 from yt_concatenate.pipeline.steps.get_video_list import GetVideoList
+from yt_concatenate.pipeline.steps.download_captions import DownloadCaptions
 from yt_concatenate.pipeline.steps.step import StepException
 
 from yt_concatenate.pipeline.pipeline import Pipeline
 
 CHANNEL_ID = 'UCKSVUHI9rbbkXhvAXK-2uxA'
-
-"""
-g = GetVideoList()
-g.process
-d = DownCaption()
-d.process
-s = SearchForWord()
-s.process
-e = EditVideo()
-e.process
-"""
 
 
 def main():
@@ -24,7 +14,7 @@ def main():
 
     steps = [
         GetVideoList(),
-        # DownCaption(),
+        DownloadCaptions(),
         # SearchForWord(),
         # EditVideo(),
     ]
